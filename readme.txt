@@ -25,3 +25,7 @@ go to the app root
 > grunt build:angular --force
 
 to build the 'angular' folder
+
+本项目由angularJS编写，运行时需要Node.js环境；
+
+运行之前，修改src/config下的ip.json，一个是前端运行地址，第二行是后台接口地址。
