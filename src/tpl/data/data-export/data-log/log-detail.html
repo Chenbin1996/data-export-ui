@@ -1,0 +1,55 @@
+<div ng-controller="logDetailCtrl">
+    <!--	<div class="bg-light lter b-b wrapper-md">
+            <h1 class="m-n font-thin h3">导入日志—详情</h1>
+        </div>-->
+    <div class="wrapper-md">
+        <div class="panel panel-default m-all-0">
+            <div class="panel-body">
+                <form id="hydroNetAddForm" class="form-inline" method="get" novalidate="novalidate">
+                    <div class="form-item">
+                        <label>模板名称</label>
+                        <input type="text" class="form-control input-short" ng-model="template_name" readonly/>
+                    </div>
+                    <div class="form-item">
+                        <label>导入人</label>
+                        <input type="text" class="form-control input-short" ng-model="creator_id" readonly/>
+                    </div>
+                    <div class="form-item">
+                        <label>导入时间</label>
+                        <input type="text" class="form-control input-short" ng-model="expoort_time" readonly/>
+                    </div>
+                    <div class="form-item">
+                        <label>数据库URL</label>
+                        <input type="text" class="form-control input-short" ng-model="dburl" readonly/>
+                    </div>
+                    <div class="form-item">
+                        <label>连接端口</label>
+                        <input type="text" class="form-control input-short" ng-model="port" readonly/>
+                    </div>
+                    <div class="form-item">
+                        <label>数据库名</label>
+                        <input type="text" class="form-control input-short" ng-model="dbname" readonly/>
+                    </div>
+                    <div class="form-item">
+                        <label>表名</label>
+                        <input type="text" class="form-control input-short" ng-model="table_name" readonly/>
+                    </div>
+                    <div class="form-item">
+                        <label>状态</label>
+                        <input type="text" class="form-control input-short" ng-model="status" readonly/>
+                    </div>
+                    <div class="form-item">
+                        <label>导入数量</label>
+                        <input type="text" class="form-control input-short" ng-model="total_count" readonly/>
+                    </div>
+                </form>
+            </div>
+            <div class="line line-dashed b-b"></div>
+            <div class="btn-box">
+                <button type="submit" class="btn btn-default" ng-click="back()">
+                    返回
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

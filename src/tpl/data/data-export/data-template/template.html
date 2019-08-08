@@ -1,0 +1,58 @@
+<div ng-controller="dataController">
+    <!--<div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">模板数据—管理</h1>
+    </div>-->
+    <div class="wrapper-md">
+        <div class="panel panel-default m-all-0 border-bottom-n">
+
+            <div class="panel-body">
+                <form class="form-inline" method="get">
+                    <div class="form-item">
+                        <label>模板名称</label>
+                        <input type="text" class="form-control input-short" ng-model="find_name"/>
+                    </div>
+					<button type="submit" class="btn btn-search" ng-click="find()">
+                        搜 索
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div class="table-bar">
+                        <button type="button" class="btn btn-primary btn-xs" ng-click="dataAdd()">
+                            <i class="icon-jx_add"></i> 新增
+                        </button>
+                    </div>
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th class="wid-5">序号</th>
+                            <th class="wid-10">模板名称</th>
+                            <th class="wid-10">创建人</th>
+                            <th class="wid-10">创建时间</th>
+                            <th>描述</th>
+                            <th width="200px">操作</th>
+                        </tr>
+                        <tr ng-repeat="module in moduleList | filter:{catchment:selectedCatchment}" ng-init="index=$index+1">
+							<td>{{index + (paginationConf.currentPage-1)*paginationConf.itemsPerPage}}</td>
+                            <td>{{module.templateName}}</td>
+                            <td>{{module.userName}}</td>
+                            <td>{{module.createTime}}</td>
+                            <td class="remark">{{module.description}}</td>
+                            <td class="td-tool">
+                                <!--<a class="btn btn-primary btn-xs" ng-click="dataDetail(module.id)"><i class="fa fa-info" title="详情"></i></a>-->
+                                <a class="btn btn-xs" ng-click="dataEdit(module.id)"><i class="fa fa-cog" title="修改数据库配置"></i></a>
+                                <a class="btn btn-xs" ng-click="tableEdit(module.id)"><i class="fa fa-edit" title="表管理"></i></a>
+                                <a class="btn btn-xs" ng-click="tableFieldEdit(module.id)"><i class="fa fa-check-square" title="导入字段管理"></i></a>
+                                <a class="btn btn-xs" ng-click="fieldEdit(module.id)"><i class="fa fa-check-square-o" title="excel字段管理"></i></a>
+                                <a class="btn btn-xs" ng-click="moduleDelete(module.id);"><i class="icon-jx_delete_form" title="删除"></i></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <tm-pagination conf="paginationConf"></tm-pagination>
+            </div>
+        </div>
+    </div>
+</div>

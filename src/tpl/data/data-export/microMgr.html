@@ -1,0 +1,61 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm"
+	ng-init="app.settings.asideFolded = false;app.settings.asideDock = false"
+	ng-controller="FlotChartDemoCtrl">
+
+	<h1>Mock.js demo</h1>
+	<hr />
+
+	<p>
+		<button ng-click="get()">http请求单条数据</button>
+	</p>
+
+	<ul ng-repeat="item in box" style="background: {{item.color}}">
+		<li>{{item.name}}</li>
+		<li>{{item.age}}</li>
+	</ul>
+
+
+	<p>
+		<!-- <button ng-click="getList()">列表接口</button> -->
+	</p>
+	<div>
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th data-toggle="true">模块名称</th>
+					<th>模块地址</th>
+					<th data-hide="phone,tablet">模块描述</th>
+					<th data-hide="phone,tablet">模块类型</th>
+					<th data-hide="phone,tablet" data-name="Date Of Birth">接入时间</th>
+					<th data-hide="phone">状态</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr ng-repeat="module in moduleList" ng-init="index=$index+1">
+					<td>{{index +
+						(paginationConf.currentPage-1)*paginationConf.itemsPerPage}}</td>
+					<td>{{module.name}}</td>
+					<td>{{module.serviceUrl}}</td>
+					<td>{{module.description}}</td>
+					<td ng-if="module.type===1">公共模块</td>
+					<td ng-if="module.type===2">业务模块</td>
+					<td ng-if="module.type===3">私有模块</td>
+					<td>{{module.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</td>
+					<td><span class="label bg-success" title="Active"
+						ng-if="module.status === 1">激活</span> <span
+						class="label bg-danger" title="InActive"
+						ng-if="module.status === 0">禁用</span></td>
+					<td><a class="glyphicon glyphicon-info-sign" role="menuitem"
+						ng-click="moduleDetail(module.id);">&nbsp</a> <a
+						class="glyphicon glyphicon-edit" role="menuitem"
+						ng-click="moduleEdit(module.id,module.name,module.status);">&nbsp</a>
+						<a class="glyphicon glyphicon-remove" role="menuitem"
+						ng-click="moduleDelete(module.id,module.name);"></a></td>
+				</tr>
+		</table>
+		<tm-pagination conf="paginationConf"></tm-pagination>
+	</div>
+</div>

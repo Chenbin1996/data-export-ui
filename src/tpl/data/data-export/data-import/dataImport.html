@@ -1,0 +1,143 @@
+<!--<div class="bg-light lter b-b wrapper-md">
+	<h1 class="m-n font-thin h3">数据导入</h1>
+</div>-->
+<div class="wrapper-md" ng-controller="dataImportController">
+	<div class="panel panel-default m-all-0">
+		<div class="panel-body">
+			
+			<div class="table-responsive">
+				<div class="table-bar">
+					<button type="button" class="btn btn-primary btn-xs" ng-hide="showSave" ng-click="openBox()">
+						<i class="icon-jx_import"></i> 数据导入
+					</button>
+					<button type="button" class="btn btn-primary btn-xs" ng-if="showSave" ng-click="savedata()">
+						<i class="icon-jx_add"></i> 保存
+					</button>
+					<button type="button" class="btn btn-primary btn-xs" ng-if="showSave" ng-click="deleteAll()">
+						<i class="icon-jx_delete"></i> 删除所有数据
+					</button>
+					<button type="button" class="btn btn-primary btn-xs" ng-if="showSave" ng-click="saveBack()">
+						<i class="icon-jx_left"></i> 返回
+					</button>
+				</div>
+				<div ng-if="showSave">
+					<label>数据校验状态</label>
+						<select ng-init="init_dataType()" ng-model="data_type" ng-options="x.name for x in dataTypes" 
+						ng-change="dataType_change(data_type)" >
+						<option value="">全部</option>
+					</select>
+			</div>
+			<table class="table table-bordered table-hover" ng-init="initList()">
+				<tr>
+					<th>序号</th>
+
+					<th ng-if="isShowId(mapList[0],key)" ng-repeat="(key,value) in mapList[0]" >{{key}}</th>
+					<th>数据校验状态</th>
+					<th>错误信息</th>
+					<th>操作</th>
+				</tr>
+				<tr ng-repeat="map in mapList | filter:{catchment:selectedCatchment}" ng-init="index=$index+1">
+					<td>{{index + (paginationConf.currentPage-1)*paginationConf.itemsPerPage}}</td>
+
+					<td ng-if="isShowId(map,key)" ng-repeat="(key,value) in map">{{value}}</td>
+					<td>{{map['数据校验状态']}}</td>
+					<td>{{map['错误信息']}}</td>
+					<td  class="td-tool">
+						<a class="btn btn-xs" ng-click="edit(map)"><i class="icon-jx_edit" title="修改"></i></a>
+						<a class="btn btn-xs" ng-click="deleteData(map);"><i class="icon-jx_delete_form" title="删除"></i></a>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+		<tm-pagination conf="paginationConf"></tm-pagination>
+	</div>
+</div>
+
+
+<!--描述：数据导入模态框-->
+<div class="modal fade" id="dataBox"  role="dialog_region" data-backdrop="static">
+	<div class="modal-dialog water_dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">数据导入</h4>
+			</div>
+			<div class="modal-body" >
+                <form class="form-horizontal" id="fileform">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">模板名称</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" ng-model="temp_type"
+                                    ng-options="x.templateName for x in tempTypes" ng-change="type_change(temp_type)">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">上传文件</label>
+                        <div class="col-sm-8" ng-model="filefrom" enctype="multipart/form-data">
+                            <div class="fileDivBox" title="文件导入操作">
+                                <input ng-init="initFile()" id="input-file" type="file" class="file" file-model="myFile"
+                                       data-show-preview="false" name="fileExcel" placeholder="请选择相关文件"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">默认模板</label>
+                        <div class="col-sm-8">
+                            <a href="javascript:;" style="color: #0075B0;line-height: 34px;" ng-click="excelExport()">
+                                {{temp_type_name}}导入模板 </a>
+                        </div>
+                    </div>
+                </form>
+			</div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-primary" ng-click="fileInput()">
+                    <span>excel导入</span>
+                </a>
+            </div>
+		</div>
+	</div>
+</div>
+
+<!--描述：修改数据模态框-->
+<div class="modal fade" id="editBox"  role="dialog_region" data-backdrop="static">
+	<div class="modal-dialog modal-threeCol" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" >数据修改</h4>
+			</div>
+			<div class="modal-body">
+				<div class="wid-100">
+					<form id="fromId" method="get" class="form-inline">
+						<div class="form-item" ng-if="isShowField(editKey)" ng-repeat='(editKey,editValue) in editMap'>
+							<label>{{editKey}}</label>
+							<input class="form-control input-short" type="text" value="{{editValue}}" name="{{editKey}}"/>
+							<span class="required" ng-if="isRequired(editKey)">*</span>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="javascript:;" class="btn btn-primary" ng-click="editBoxOk(editMap)">
+					<span>校验数据</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+	$("#input-file").fileinput({
+		uploadAsync: true, //异步上传
+		language: "zh", //设置语言
+		showUpload: false,
+		allowedFileExtensions: ["xls", "xlsx"] //接收的文件后缀
+	});
+</script>

@@ -1,0 +1,192 @@
+{
+	"moduleId": "44d7bde1ba2e11e7a0e6ac1f6b182e9e",
+	"moduleName": "数据导入",
+	"version": "V100R002C10",
+	"type":"1",
+	"menus": [
+		
+		{
+			"seqId": "51",
+			"parentId": "0",
+			"isLeaf":false,
+			"isRoot":true,
+			"name": "数据导入",
+			"icon": "icon-nav-9",
+			"url": "",
+			"requireJS":[],
+			"description": "一级菜单-数据导入"
+		},
+		
+		{
+			"seqId": "54",
+			"parentId": "51",
+			"isLeaf":false,
+			"isRoot":false,
+			"name": "数据导入",
+			"icon": "fa fa-database text-info-dk",
+			"url": "",
+			"requireJS":[],
+			"description": "二级菜单-数据导入"
+		},
+		{
+			"seqId": "535",
+			"parentId": "54",
+			"isLeaf":true,
+			"isRoot":false,
+			"name": "数据库源",
+			"icon": "fa fa-newspaper-o text-muted",
+			"url": "tpl/data/data-export/db-source/dbsource.html",
+			"requireJS":["js/controllers/data/data-export/db-source/dbsource.js"],
+			"description": "三级菜单-数据导入-数据库源"
+		},
+		{
+			"seqId": "536",
+			"parentId": "54",
+			"isLeaf":true,
+			"isRoot":false,
+			"name": "模板工具",
+			"icon": "fa fa-newspaper-o text-muted",
+			"url": "tpl/data/data-export/field-tool/field-tool.html",
+			"requireJS":["js/controllers/data/data-export/field-tool/field-tool.js"],
+			"description": "三级菜单-数据导入-模板工具"
+		},
+		{
+			"seqId": "534",
+			"parentId": "54",
+			"isLeaf":true,
+			"isRoot":false,
+			"name": "模板数据",
+			"icon": "fa fa-newspaper-o text-muted",
+			"url": "tpl/data/data-export/data-template/template.html",
+			"requireJS":["js/controllers/data/data-export/data-template/template.js"],
+			"description": "三级菜单-数据导入-模板数据"
+		},
+		{
+			"seqId": "537",
+			"parentId": "54",
+			"isLeaf":true,
+			"isRoot":false,
+			"name": "数据导入",
+			"icon": "fa fa-newspaper-o text-muted",
+			"url": "tpl/data/data-export/data-import/dataImport.html",
+			"requireJS":["js/controllers/data/data-export/data-import/dataImport.js","vendor/fileinput/fileinput.min.js"],
+			"description": "三级菜单-数据导入-数据导入"
+		},
+		{
+			"seqId": "538",
+			"parentId": "54",
+			"isLeaf":true,
+			"isRoot":false,
+			"name": "导入日志",
+			"icon": "fa fa-newspaper-o text-muted",
+			"url": "tpl/data/data-export/data-log/dataLog.html",
+			"requireJS":["js/controllers/data/data-export/data-log/dataLog.js"],
+			"description": "三级菜单-数据导入-导入日志"
+		}
+		
+		
+		
+	],
+	"components": [
+		{
+			"seqId": "1",
+			"name": "report",
+			"url": "componentXXX1.html",
+			"requireJS":["js/components/componentsXXX1.js", "js/components/componentXXX2.js"],
+			"description": "demo组件示例，URL为相对路径"
+		}
+	],
+	"pages":[
+		{
+			"seqId": "580",
+			"name": "模板数据新增",
+			"url": "tpl/data/data-export/data-template/template-add.html",
+			"requireJS":["js/controllers/data/data-export/data-template/template-add.js"],
+			"description": "模板数据=>模板数据新增"
+		},
+		{
+			"seqId": "590",
+			"name": "选择表",
+			"url": "tpl/data/data-export/data-template/template-table.html",
+			"requireJS":["js/controllers/data/data-export/data-template/template-table.js"],
+			"description": "模板数据=>选择表"
+		},
+		{
+			"seqId": "591",
+			"name": "选择表字段",
+			"url": "tpl/data/data-export/data-template/template-table-field.html",
+			"requireJS":["js/controllers/data/data-export/data-template/template-table-field.js"],
+			"description": "模板数据=>选择表字段"
+		},
+		{
+			"seqId": "581",
+			"name": "模板数据详情",
+			"url": "tpl/data/data-export/data-template/template-detail.html",
+			"requireJS":["js/controllers/data/data-export/data-template/template-detail.js"],
+			"description": "模板数据=>模板数据详情"
+		},
+		{
+			"seqId": "582",
+			"name": "模板数据编辑",
+			"url": "tpl/data/data-export/data-template/template-edit.html",
+			"requireJS":["js/controllers/data/data-export/data-template/template-edit.js"],
+			"description": "模板数据=>模板数据编辑"
+		},
+		{
+			"seqId": "586",
+			"name": "模板字段管理",
+			"url": "tpl/data/data-export/data-template/template-field.html",
+			"requireJS":["js/controllers/data/data-export/data-template/template-field.js"],
+			"description": "模板数据=>模板字段管理"
+		},
+		{
+			"seqId": "583",
+			"name": "数据库源新增",
+			"url": "tpl/data/data-export/db-source/dbsource-add.html",
+			"requireJS":["js/controllers/data/data-export/db-source/dbsource-add.js"],
+			"description": "数据库源=>数据库源新增"
+		},
+		{
+			"seqId": "584",
+			"name": "数据库源详情",
+			"url": "tpl/data/data-export/db-source/dbsource-detail.html",
+			"requireJS":["js/controllers/data/data-export/db-source/dbsource-detail.js"],
+			"description": "数据库源=>数据库源详情"
+		},
+		{
+			"seqId": "585",
+			"name": "数据库源编辑",
+			"url": "tpl/data/data-export/db-source/dbsource-edit.html",
+			"requireJS":["js/controllers/data/data-export/db-source/dbsource-edit.js"],
+			"description": "数据库源=>数据库源编辑"
+		},
+		{
+			"seqId": "587",
+			"name": "校验工具新增",
+			"url": "tpl/data/data-export/field-tool/field-tool-add.html",
+			"requireJS":["js/controllers/data/data-export/field-tool/field-tool-add.js"],
+			"description": "校验工具=>校验工具新增"
+		},
+		{
+			"seqId": "588",
+			"name": "校验工具详情",
+			"url": "tpl/data/data-export/field-tool/field-tool-detail.html",
+			"requireJS":["js/controllers/data/data-export/field-tool/field-tool-detail.js"],
+			"description": "校验工具=>校验工具详情"
+		},
+		{
+			"seqId": "589",
+			"name": "校验工具编辑",
+			"url": "tpl/data/data-export/field-tool/field-tool-edit.html",
+			"requireJS":["js/controllers/data/data-export/field-tool/field-tool-edit.js"],
+			"description": "校验工具=>校验工具编辑"
+		},
+		{
+			"seqId": "560",
+			"name": "日志详情界面",
+			"url": "tpl/data/data-export/data-log/log-detail.html",
+			"requireJS":["js/controllers/data/data-export/data-log/log-detail.js"],
+			"description": "导入日志=>日志详情界面"
+		}
+	]
+}

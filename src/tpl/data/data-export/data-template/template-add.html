@@ -1,0 +1,109 @@
+<div ng-controller="dataAddCtrl">
+	<!--<div class="bg-light lter b-b wrapper-md">
+		<h1 class="m-n font-thin h3">模板数据—新增</h1>
+	</div>-->
+	<div class="wrapper-md">
+		<div class="panel panel-default m-all-0">
+			<div class="panel-body">
+				<form id="hydroNetAddForm" class="form-inline" method="get" novalidate="novalidate">
+					<div class="form-item">
+						<label>模板名称</label>
+						<input type="text" class="form-control input-short" ng-model="template_name"  ng-blur="isRepeat()"/>
+						<span ng-if="repeat">模板名称已存在，请重新填写！</span>
+					</div>
+          <div class="form-item">
+              <label>功能模块</label>
+              <select ng-init="init_module()" ng-model="module" ng-options="x.name for x in modules"
+                      ng-change="module_change(module)" class="form-control select-short">
+                  <option  value="">请选择</option>
+              </select>
+          </div>
+					<div class="form-item">
+						<label>连接名称</label>
+						<input type="text" class="form-control input-short" ng-model="conn_name" />
+					</div>
+					<div class="form-item">
+						<label>数据库类型</label>
+						<select ng-init="init_type()" ng-model="db_type" ng-options="x.name for x in dbTypes" 
+							ng-change="type_change(db_type)" class="form-control select-short"> 
+						<option  value="">请选择</option> 
+						</select>
+					</div>
+					<div class="form-item">
+						<label>数据库IP</label>
+						<input type="text" class="form-control input-short" ng-model="db_url" ng-change = 'change_reset()' ng-blur="checkUrl(db_url)"/>
+					</div>
+					<div class="form-item">
+						<label>用户名称</label>
+						<input type="text" class="form-control input-short" ng-model="user_name" ng-change = 'change_reset()'/>
+					</div>
+					<div class="form-item">
+						<label>密码</label>
+						<input type="password" class="form-control input-short" ng-model="user_password" ng-change = 'change_reset()'/>
+					</div>
+					<div class="form-item">
+						<label>端口</label>
+						<input type="text" class="form-control input-short" ng-model="db_port" ng-change = 'change_reset()' ng-blur="checkPort(db_port)"/>
+					</div>
+					<div class="form-item">
+						<label>数据库名</label>
+						<input type="text" class="form-control input-short" ng-model="db_name" ng-change = 'change_reset()'/>
+					</div>
+					<br/>
+					<div class="form-item">
+						<label>描述</label>
+                        <textarea class="form-control textarea-long" ng-model="description" rows="4" ></textarea>
+					</div>
+					<!--<br/>
+					<div class="form-item" id="tableName" >
+						<label>数据库表名</label>
+						<input ng-model="table_name" type="text" class="form-control input-short-o" disabled="disabled">
+						<a class="input-group-addon" ng-click="table_show()"><i class="fa fa-search"></i></a>
+					</div>-->
+				</form>
+			</div>
+            <div class="line line-dashed b-b"></div>
+            <div class="btn-box">
+                <button id="testButton" type="submit" class="btn btn-primary" ng-click="template_test()" ng-hide="button_test" >
+                    测试连接
+                </button>
+                <button id="addButton" type="submit" class="btn btn-primary" ng-click="template_add()" ng-hide="button_show">
+                    保存
+                </button>
+                <button type="submit" class="btn btn-default" ng-click="back()">
+                    返回
+                </button>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<!--描述：数据库表名-->
+	<div class="modal fade" id="table_ztree"  role="dialog_region" ng-init="init_region()">
+		<div class="modal-dialog water_dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">选择数据库表</h4>
+				</div>
+				<div class="modal-body">
+				<div class="input-group">
+			        <input type="text" ng-model="tableName" class="form-control" placeholder="请输入数据库表名称">
+			        <span class="input-group-btn">
+			        	<button class="btn btn-default" type="button" ng-click="select_region()">查询</button>
+			        </span>
+			    </div>
+					<ul id="tableTree" class="ztree ztree_box_modal"></ul>
+				</div>
+				<div class="modal-footer">
+					<a href="javascript:;" class="btn btn-primary" ng-click="region_modalOk()">
+						<span>确定</span>
+					</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>

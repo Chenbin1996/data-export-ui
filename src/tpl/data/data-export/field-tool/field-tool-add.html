@@ -1,0 +1,49 @@
+<div ng-controller="toolAddCtrl">
+    <!--<div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">模板工具—新增</h1>
+    </div>-->
+    <div class="wrapper-md">
+        <div class="panel panel-default m-all-0">
+            <div class="panel-body">
+                <form id="hydroNetAddForm" class="form-inline" method="get" novalidate="novalidate">
+                    <div class="form-item">
+                        <label>名称</label>
+                        <input type="text" class="form-control input-short" ng-model="tool_name" ng-blur="isRepeat()"/>
+                        <span ng-if="repeat">该名称已存在，请重新填写！</span>
+                    </div>
+                    <br/>
+                    <div class="form-item">
+                        <label>工具类型</label>
+                        <select ng-init="init_type()" ng-model="tool_type" ng-options="x.name for x in toolTypes"
+                                ng-change="type_change(tool_type)" class="form-control select-short">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                    <br/>
+                    <div class="form-item">
+                        <label>校验器全限定名称</label>
+                        <input type="text" class="form-control input-short" ng-model="tool_className"
+                               ng-blur="checkTool(tool_className)"/>
+                    </div>
+                    <br/>
+                    <div class="form-item">
+                        <label>描述</label>
+                        <textarea class="form-control textarea-long" ng-model="tool_description" rows="4"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="line line-dashed b-b"></div>
+            <div class="btn-box">
+                <button id="addButton" type="submit" class="btn btn-primary" ng-click="tool_add()">
+                    保存
+                </button>
+                <button type="submit" class="btn btn-default" ng-click="back()">
+                    返回
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>

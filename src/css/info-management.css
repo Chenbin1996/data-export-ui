@@ -1,0 +1,225 @@
+/**
+ * ================================
+ * 描述说明 信息管理
+ * @author jinjiabin</br>2017/11/21
+ * @version 1.0.0
+ * ================================
+ */
+
+
+/* 条件搜索 */
+
+.search-form {
+	position: relative;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	margin-bottom: 1px;
+	border-radius: 0;
+	background-color: #fff;
+}
+
+
+/* 河流管理 */
+
+.basin_map {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 320px;
+	height: 240px;
+	border: 1px solid #cfdadd;
+	background: #eee;
+	z-index: 0;
+	/*z-index: 100;*/
+}
+
+
+/*  树形菜单 */
+
+.tree-panel {
+	width: 100%;
+	background: #f0f6e4;
+	min-height: 560px;
+	border: 1px solid #ddd;
+}
+
+ul.ztree {
+	overflow: auto;
+}
+
+.ztree li ul {
+	height: auto;
+}
+
+
+/* 数据导入 */
+
+.import_explain {
+	width: 100%;
+}
+
+.import_explain p {
+	float: left;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.file-input {
+	width: 456px;
+	float: left;
+}
+
+.file-input span {
+	line-height: 20px;
+	margin: 0;
+}
+
+.file-input .btn-primary span {
+	color: #fff;
+}
+
+
+/* PDF导入 */
+
+.pdfobject-container {
+	height: 500px;
+}
+
+.pdfobject {
+	border: 1px solid #666;
+}
+
+
+/* 标签页 */
+
+.tabs-list {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #ddd;
+	padding-left: 10px;
+	margin-bottom: 0;
+	list-style: none;
+}
+
+.tabs-list li {
+	position: relative;
+	display: block;
+	float: left;
+	padding: 8px 24px;
+	margin-bottom: -1px;
+	margin-right: 5px;
+	background-color: #ddd;
+}
+
+.tabs-list li.select {
+	background-color: #428bca;
+}
+
+.tabs-list li.select a {
+	color: #fff;
+}
+
+.tab-content {
+	margin-top: 36px;
+}
+
+.tab-con {
+	display: none;
+	padding: 10px;
+}
+
+
+/* 列表 */
+
+.list-group li {
+	cursor: pointer;
+	position: relative;
+}
+
+.list-group li:hover {
+	color: #555;
+	text-decoration: none;
+	background-color: #f5f5f5;
+}
+
+.list-group-item {
+	padding: 5px 15px;
+}
+
+.list-group-item a {
+	float: right;
+	padding: 0 5px;
+	margin: 0 0 0 5px;
+}
+
+.searchBar {
+	position: relative;
+	margin-bottom: 15px;
+}
+
+.searchBar button,
+.searchBar a {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+}
+
+
+/* 框架select样式 */
+
+.ui-select-bootstrap {
+	float: left;
+	width: 160px;
+}
+
+.ui-select-bootstrap>.ui-select-search,
+.ui-select-bootstrap>.ui-select-match {
+	width: 160px;
+	padding: 0 15px;
+}
+
+
+/*基础资料 => 水系管理*/
+
+.form-status .status {
+	float: left;
+	line-height: 24px;
+	color: #555;
+	width: 95px;
+	font-size: 14px;
+	text-align: left;
+	font-weight: normal;
+	padding: 5px;
+	margin: 0;
+}
+
+.form-status .i-switch {
+	vertical-align: text-bottom;
+}
+
+
+/*行政区划ztree*/
+
+.ztree-box {
+	height: 660px;
+	overflow: auto;
+	overflow-x: hidden
+}
+
+/* 所属水系模态框=》树 */
+.ztree_box_modal {
+	height: 400px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+
+/* 所属水系模态框 */
+.water_dialog {
+	top: 40%;
+}
+
+/* 河湖库编码图标位置 */
+.code-ico-box{
+	margin-left: -35px;
+}

@@ -1,0 +1,94 @@
+/**
+ * ================================
+ * 描述说明 项目管理
+ * @author haitaoyuan</br>2017/11/20
+ * @version 1.0.0
+ * ================================
+ */
+
+/* 面板定位：左侧表单，右侧地图 */
+.proMgr-container-box {
+	position: relative;
+}
+/* 地图板块 */
+.proMgr-basin_map {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	width: 35%;
+	height: 320px;
+	border: 1px solid #cfdadd;
+	background: #eee;
+	z-index: 0;
+}
+/* 详情页面Header部分 */
+.proMgr-headBox {
+	position: relative;
+}
+/* 详情页面Header部分 - 右侧关闭按钮 */
+.proMgr-close-btn {
+	position: absolute;
+	top: 25px;
+	right: 50px;
+	z-index: 1;
+	border: none;
+}
+/* 项目详情Navbar */
+.proMgr-view-navbox {
+	position: relative;
+}
+.proMgr-view-content {
+	position: relative;
+	height: 600px;
+}
+.proMgr-view-content h1,
+.proMgr-view-content h2 {
+	width: 50%;
+	height: 50%;
+	overflow: auto;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	color: #E3E3E3;
+}
+/* 发起督办单按钮 */
+.proMgr-handle-btn {
+	position: absolute;
+	top: 0px;
+	right: 50px;
+	z-index: 2;
+}
+
+/* 快速分期内容控制滚动 */
+.period-content {
+	height: 440px;
+	overflow-y: scroll;
+}
+.periodBox {
+	position: relative;
+	border-bottom: solid 1px #E3E3E3;
+	margin: 30px 0;
+}
+.periodBox .periodDate {
+	position: absolute;
+	top: -10px;
+	left: 100px;
+	background: #FFF;
+	padding: 0 10px;
+}
+/* Bootstrap 轮播左右区域定位 */
+.left.carousel-control {
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-image: none;
+}
+.right.carousel-control {
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-image: none;
+}

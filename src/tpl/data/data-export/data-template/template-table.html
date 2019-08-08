@@ -1,0 +1,79 @@
+<div ng-controller="tableController">
+    <!--<div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">模板数据—表管理</h1>
+    </div>-->
+    <div class="wrapper-md">
+        <div class="panel panel-default m-all-0">
+
+            <div class="panel-body">
+                <form class="form-inline" method="get">
+                    <div class="form-item">
+                        <label>模板导入器</label>
+                        <select  ng-init = "getToolName()" class="form-control select-short" ng-model="defaultImport" name="editState"
+                                 ng-change="importChange(defaultImport)" ng-options="x as x.name for x  in importTools">
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th class="wid-5">序号</th>
+                            <th class="wid-20">表名称</th>
+                            <th class="wid-15">主键名称</th>
+                            <th class="wid-15">主键类型</th>
+                            <th class="wid-15">主键生成方式</th>
+                            <th class="wid-15">表导入顺序</th>
+                            <th class="wid-20">操作</th>
+                        </tr>
+                        <tr ng-repeat="table in tableList | filter:{catchment:selectedCatchment}">
+							<td>{{$index+1}}</td>
+                            <td style="padding: 0">
+                            	<select  ng-model="table.tableName" name="editState"
+								 class="form-control select-short" ng-change='tableChange(table,table.tableName)' > 
+									<option value="">请选择</option>
+									<option ng-repeat = 'x in tables' >{{x.tableName}}</option>
+                        		</select>
+                            </td>
+                            <td>{{table.keyName}}</td>
+                            <td>{{table.keyType}}</td>
+                            <td style="padding: 0">
+                            	<select  ng-model="table.generate_name" name="editState"
+								 class="form-control select-short" ng-change='generateChange(table,table.generate_name)' > 
+									<option value="">请选择</option>
+									<option ng-repeat = '(key,value) in generates' >{{key}}</option>
+                        		</select>
+                            </td>
+                            <td class="td-tool">
+                               {{$index+1}}
+                            </td>
+                            <td>
+                            	<a class="btn btn-primary btn-xs" ng-click="moveUp(table)" ng-if="couldEdit"><i class="fa fa-chevron-up" title="上移"></i></a>
+                            	<a class="btn btn-primary btn-xs" ng-click="moveDown(table)" ng-if="couldEdit"><i class="fa fa-chevron-down" title="下移"></i></a>
+                            	<a class="btn btn-primary btn-xs" ng-click="moduleDelete(table)" ng-if="couldEdit"><i class="fa fa-trash-o" title="删除"></i></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="m-t-10  m-b-10">
+                    <a class="btn btn-primary btn-xs p-l-10 p-r-10" ng-click="addTable()" ng-if="couldEdit">
+	                    <i class="fa fa-plus" title="添加表"></i>
+	                </a>
+	            </div>
+            </div>
+            <div class="panel-footer m-b-10">
+				<div class="btn-box">
+					<button id="addButton" type="submit" class="btn btn-primary" ng-click="add()" ng-if='couldEdit'>
+						保 存
+					</button>
+					<button type="submit" class="btn btn-default" ng-click="back()">
+						返 回
+					</button>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>

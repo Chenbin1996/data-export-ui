@@ -1,0 +1,144 @@
+<div ng-controller="imDataImport">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">数据导入</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default m-all-0">
+            <div class="panel-body">
+                <form class="form-inline" method="get">
+                	<div class="form-item">
+                        <label>选择省份</label>
+                        <select ng-init="initProvince()" ng-model="select_province" ng-options="province.areaName for province in provinceList" 
+                        	ng-change="province_change(select_province)" class="form-control select-short">
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label>选择城市</label>
+                        <select ng-model="select_city" ng-options="city.areaName for city in cityList" 
+                        	ng-change="city_change(select_city)" class="form-control select-short">
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label>县(市、区)</label>
+                        <select ng-model="select_county" ng-options="county.areaName for county in countyList"
+                                ng-change="county_change(select_county)" class="form-control select-short">
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label>乡(镇、街道)</label>
+                        <select ng-model="select_town" ng-options="town.areaName for town in townList"
+                                ng-change="town_change(select_town)" class="form-control select-short">
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3 col-xs-12">
+                        <div class="panel panel-default m-all-0">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">导入项列表</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="searchBar">
+                                    <input type="text" class="form-control rounded" ng-model="search.importItem"/>
+                                    <button class="btn btn-rounded btn-sm btn-icon btn-info">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                                <ul class="list-group">
+                                    <li class="list-group-item" ng-class="{active:importItem.id == active}"
+                                        ng-click="importItem_active(importItem.id,importItem.name,importItem.type)"
+                                        ng-repeat="importItem in importItems">
+                                        {{importItem.name}}
+                                        <a  class="btn btn-primary btn-xs" ng-click="download(importItem.name,importItem.type)">
+                                            <i class="fa fa-download" title="下载"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-xs-12">
+                        <div class="panel panel-default m-all-0">
+                            <div class="panel-body">
+                                <!--<form class="form-inline" method="get">
+                                    <input id="input-1a" type="file" class="file" data-show-preview="">
+                                </form>-->
+
+                                <form id="ffImport" method="post">
+                                    <div title="Excel导入操作">
+                                        <input type="hidden" id="AttachGUID" name="AttachGUID"/>
+                                        <input id="excelFile" type="file">
+                                    </div>
+                                </form>
+
+                                <div class="import_explain">
+                                    <p>1、所有部件在导入前确保已经导入河道河长</p>
+                                    <p>2、所有部件必须有坐标、所在镇街、以及对应镇级河道</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="table-responsive">
+
+                                    <button type="submit" class="btn btn-danger" style="float: right;margin: 5px">
+                                        <i class="fa fa-reply"></i> 导出错误信息
+                                    </button>
+
+                                    <button type="submit" class="btn btn-success disabled" style="float: right;margin: 5px">
+                                        <i class="fa fa-save"></i> 保存
+                                    </button>
+
+                                    <button type="submit" class="btn btn-primary" style="float: right;margin: 5px">
+                                        <i class="fa fa-check"></i> 检查
+                                    </button>
+
+                                    <table class="table table-bordered table-hover" data-filter="#filter">
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>数据状态</th>
+                                            <th>数据字段1</th>
+                                            <th>数据字段2</th>
+                                            <th>数据字段3</th>
+                                            <th>错误信息</th>
+                                        </tr>
+                                        <tr ng-repeat="module in moduleList" ng-init="index=$index+1">
+                                            <td>
+                                                {{index + (paginationConf.currentPage -1)*paginationConf.itemsPerPage}}
+                                            </td>
+                                            <td>{{module.type}}</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <tm-pagination conf="paginationConf"></tm-pagination>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $("#excelFile").fileinput({
+        uploadUrl: "/FileUpload/Upload",//上传的地址
+        language: "zh",
+        dropZoneEnabled: false,
+        allowedFileExtensions: ["xls", "xlsx"],
+        maxFileCount: 1,
+        /*uploadExtraData: {  //上传的时候，增加的附加参数
+            folder: '数据导入文件', guid: $("#AttachGUID").val()
+        }*/
+    });
+
+</script>

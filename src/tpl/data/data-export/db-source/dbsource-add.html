@@ -1,0 +1,45 @@
+<div ng-controller="dbsourceAddCtrl">
+    <!--<div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">数据库源—新增</h1>
+    </div>-->
+    <div class="wrapper-md">
+        <div class="panel panel-default m-all-0">
+            <div class="panel-body">
+                <form id="hydroNetAddForm" class="form-inline" method="get" novalidate="novalidate">
+                    <div class="form-item">
+                        <label>数据库源名称</label>
+                        <input type="text" class="form-control input-short" ng-model="source_name"
+                               ng-blur="isRepeat()"/>
+                        <span ng-if="repeat">数据库源名称已存在，请重新填写！</span>
+                    </div>
+                    <div class="form-item">
+                        <label>数据库源驱动</label>
+                        <input type="text" class="form-control input-short" ng-model="source_driver"
+                               ng-blur="checkDriver(source_driver)"/>
+                    </div>
+                    <div class="form-item">
+                        <label>默认端口</label>
+                        <input type="text" class="form-control input-short" ng-model="source_port"
+                               ng-blur="checkPort(source_port)"/>
+                    </div>
+                    <br/>
+                    <div class="form-item">
+                        <label>描述</label>
+                        <textarea class="form-control textarea-long" ng-model="description" rows="4"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="line line-dashed b-b"></div>
+            <div class="btn-box">
+                <button id="addButton" type="submit" class="btn btn-primary" ng-click="source_add()">
+                    保存
+                </button>
+                <button type="submit" class="btn btn-default" ng-click="back()">
+                    返回
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+</div>

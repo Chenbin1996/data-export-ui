@@ -1,0 +1,113 @@
+<div ng-controller="tableFieldController">
+    <!--<div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">模板数据—导入字段</h1>
+    </div>-->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th class="wid-5">序号</th>
+                        <th class="wid-15">字段名称</th>
+                        <th class="wid-10">所属表名</th>
+                        <!--<th class="wid-10">字段类型</th>-->
+                        <th class="wid-15">生成方式</th>
+                        <th class="wid-15">默认值</th>
+                        <th class="wid-15">生成器<i ng-mouseenter="enter()" ng-mouseleave="leave()" id="generate_id"
+                                                 class="fa fa-question-circle"></i></th>
+                        <th class="wid-15">关联外键</th>
+
+                        <th class="wid-10">操作</th>
+                    </tr>
+                    <tr ng-repeat="field in fieldList | filter:{catchment:selectedCatchment}">
+                        <td>{{$index+1}}</td>
+                        <td style="padding: 0">
+                            <select ng-model="field.tableAndField" name="editState" class="form-control select-short"
+                                    ng-change='fieldChange(field)'
+                                    ng-options="x.tableAndField as x.fieldName group by x.toTable for x in allFields">
+                                <option value="">请选择</option>
+                            </select>
+                        </td>
+                        <td>{{field.tableName}}</td>
+                        <td style="padding: 0">
+                            <select ng-model="field.typeName" name="editState" class="form-control select-short"
+                                    ng-change='typeChange(field,{{$index+1}},true)'>
+                                <option value="">请选择</option>
+                                <option ng-repeat='(key,value) in types'>{{key}}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input class="form-control input-short" name="editState" disabled ng-model="field.value"
+                                   id={{$index+1+'input'}}/>
+                        </td>
+                        <td style="padding: 0">
+                            <select class="form-control input-short" name="editState" disabled ng-model="field.toolId"
+                                    id={{$index+1+'select_generate'}} ng-options="x.id as x.name for x in generates">
+                                <option value="">请选择</option>
+                            </select>
+                        </td>
+                        <td style="padding: 0">
+                            <select class="form-control input-short" name="editState" disabled
+                                    ng-model="field.foreign_tableAndField" ng-change="foreignChange(field)"
+                                    id={{$index+1+'select_field'}}
+                                    ng-options="x.tableAndField as x.fieldName group by x.toTable for x in allFields">
+                                <option value="">请选择</option>
+                            </select>
+                        </td>
+                        <td>
+                            <a id="notRepeatCheck-{{$index}}" class="btn btn-primary btn-xs" ng-if="field.repeatCheck" ng-click="isRepeatCheck(field,$index);"><i class="fa fa-star"></i></a>
+                            <a id="repeatCheck-{{$index}}" class="btn btn-primary btn-xs" ng-if="!field.repeatCheck" ng-click="isRepeatCheck(field,$index);"><i class="fa fa-star-o"></i></a>
+                            <a class="btn btn-primary btn-xs" ng-click="fieldDetail(field);"><i class="fa fa-info"
+                                                                                                title="详情"></i></a>
+                            <a class="btn btn-primary btn-xs" ng-click="fieldDelete(field);" ng-if="couldEdit"><i
+                                    class="fa fa-trash-o" title="删除"></i></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="m-t-10  m-b-10" ng-if="couldEdit">
+                <a class="btn btn-primary btn-xs p-l-10 p-r-10" ng-click="addField()">
+                    <i class="fa fa-plus" title="添加字段"></i>
+                </a>
+
+            </div>
+            <div class="line line-dashed b-b"></div>
+            <div class="btn-box">
+                <button id="addButton" type="submit" class="btn btn-primary" ng-click="add()" ng-if="couldEdit">
+                    保 存
+                </button>
+                <button type="submit" class="btn btn-default" ng-click="back()">
+                    返 回
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!--字段详情模态框-->
+    <div class="modal fade" id="fieldDetail" role="dialog_region" data-backdrop="static">
+        <div class="modal-dialog water_dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="keyType">字段详细信息</h4>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>字段名称：{{detail_field_name}}</li>
+                        <li>所属表名：{{detail_field_table}}</li>
+                        <li>字段类型：{{detail_field_type}}</li>
+                        <li ng-if="detail_field_foreignField">
+                            关联外键：{{detail_field_foreignFieName}}.{{detail_field_foreignField}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

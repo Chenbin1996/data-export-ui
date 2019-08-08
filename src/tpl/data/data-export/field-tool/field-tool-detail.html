@@ -1,0 +1,52 @@
+<div ng-controller="toolDetailCtrl">
+    <!--<div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">模板工具—详情</h1>
+    </div>-->
+    <div class="wrapper-md">
+        <div class="panel panel-default m-all-0">
+            <div class="panel-body">
+                <form id="hydroNetAddForm" class="form-inline" method="get" novalidate="novalidate">
+                    <div class="form-item">
+                        <label>名称</label>
+                        <input type="text" class="form-control input-short" ng-model="tool_name" readonly/>
+                    </div>
+                    <br/>
+                    <div class="form-item">
+                        <label>工具类型</label>
+                        <input type="text" class="form-control input-short" ng-model="tool_type" readonly/>
+                    </div>
+                    <br/>
+                    <div class="form-item">
+                        <label>校验器全限定名称</label>
+                        <input type="text" class="form-control input-short" ng-model="tool_className" readonly/>
+                    </div>
+                    <br/>
+                    <div class="form-item">
+                        <label>创建人</label>
+                        <input type="text" class="form-control input-short" ng-model="tool_creator" readonly/>
+                    </div>
+                    <br/>
+                    <div class="form-item">
+                        <label>创建时间</label>
+                        <input type="text" class="form-control input-short" ng-model="tool_createTime" readonly/>
+                    </div>
+                    <br/>
+                    <div class="form-item">
+                        <label>描述</label>
+                        <textarea class="form-control textarea-long" ng-model="tool_description" readonly
+                                  rows="4"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="line line-dashed b-b"></div>
+            <div class="btn-box">
+                <!--<button type="submit" class="btn btn-primary" ng-click="submit()">-->
+                <!--<i class="fa fa-plus"></i>确定-->
+                <!--</button>-->
+                <button type="submit" class="btn btn-default" ng-click="back()">
+                    返回
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

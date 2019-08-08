@@ -1,0 +1,203 @@
+<div ng-controller="dataFieldController">
+    <!-- <div class="bg-light lter b-b wrapper-md">
+         <h1 class="m-n font-thin h3">模板字段—Excel字段</h1>
+     </div>-->
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th class="wid-5">序号</th>
+                        <th class="wid-15">模板字段名称</th>
+                        <th class="wid-20">对应数据库字段</th>
+                        <th class="wid-15">缺省值</th>
+                        <th class="wid-20">校验方法</th>
+                        <th class="wid-20">转换方法</th>
+                        <th class="wid-5">操作</th>
+                    </tr>
+                    <tr ng-repeat="field in fieldList | filter:{catchment:selectedCatchment}">
+                        <td>{{$index+1}}</td>
+                        <td style="padding: 0;">
+                            <input type="text" name="editState" class="form-control input-short" ng-model="field.name"/>
+                        </td>
+                        <td style="position:relative;">
+                            <ul>
+                                <li ng-repeat='x in field.excels'>{{x.tableName + ' · ' + x.fieldName}}</li>
+                            </ul>
+                            <a style="margin: 0 auto;" class="btn btn-primary btn-xs" ng-click="selectField(field);"
+                               ng-if="couldEdit"><i class="fa fa-plus" title="添加字段"></i></a>
+                        </td>
+                        <td style="padding: 0;">
+                            <input type="text" name="editState" class="form-control input-short"
+                                   ng-model="field.defaultValue"/>
+                        </td>
+                        <td style="position:relative;">
+                            <ul>
+                                <li ng-repeat='x in field.checks'><span ng-if='showOther(x)'>{{x.other + '位'}}</span>{{x.name
+                                    +' - '+ x.typeName}}
+                                </li>
+                            </ul>
+                            <a style="margin: 0 auto;" class="btn btn-primary btn-xs" ng-click="selectCheck(field);"
+                               ng-if="couldEdit"><i class="fa fa-plus" title="添加校验方法"></i></a>
+                        </td>
+                        <td style="position:relative;" ng-click="selectChange(field)">
+                            <ul>
+                                <li ng-if="field.change">{{field.change.name + ' - ' + field.change.typeName}}</li>
+                            </ul>
+                            <a style="margin: 0 auto;" class="btn btn-primary btn-xs" ng-click="selectChange(field);"
+                               ng-if="couldEdit"><i class="fa fa-share-square" title="添加转换方法"></i></a>
+                        </td>
+                        <td align="center">
+                            <a class="btn btn-primary btn-xs" ng-click="fieldDelete(field);" ng-if="couldEdit"><i
+                                    class="fa fa-trash-o" title="删除"></i></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="m-t-10  m-b-10" ng-if="couldEdit">
+                <a class="btn btn-primary btn-xs p-l-10 p-r-10" ng-click="addField()">
+                    <i class="fa fa-plus" title="添加字段"></i>
+                </a>
+            </div>
+            <div class="line line-dashed b-b"></div>
+            <div class="btn-box">
+                <button id="addButton" type="submit" class="btn btn-primary" ng-click="add()" ng-if="couldEdit">
+                    保存
+                </button>
+                <button type="submit" class="btn btn-default" ng-click="back()">
+                    返回
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!--选择字段模态框-->
+    <div class="modal fade" id="select_field" role="dialog_region" data-backdrop="static">
+        <div class="modal-dialog water_dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-label="Close" ng-click="closeAndClean()"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">选择字段</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="wid-100">
+                        <tr>
+                            <th class="wid-10">序号</th>
+                            <th class="wid-25">所属表</th>
+                            <th class="wid-25">字段名称</th>
+                            <th class="wid-25">字段类型</th>
+                            <th class="wid-15">选中</th>
+                        </tr>
+                        <tr ng-repeat="excel in excelFields" ng-init="index=$index+1">
+                            <td>{{index}}</td>
+                            <td>{{excel.tableName}}</td>
+                            <td>{{excel.fieldName}}</td>
+                            <td>{{excel.fieldType}}</td>
+                            <td>
+                                <input type="checkbox" ng-checked="isFieldCheck(excel)" ng-model="excel.check"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:;" class="btn btn-primary" ng-click="closeField()">确定</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--校验工具模态框-->
+    <div class="modal fade" id="select_tool" role="dialog_region" data-backdrop="static">
+        <div class="modal-dialog water_dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="close_check()" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">选择校验方法</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="changeBoxName">
+                        <table>
+                            <tr>
+                                <th class="wid-10">选中</th>
+                                <th class="wid-20">校验方法名称</th>
+                                <th class="wid-15">校验出错提示</th>
+                                <th class="wid-15">校验方法其余参数</th>
+                            </tr>
+                            <tr ng-repeat="fieldCheck in fieldChecks">
+                                <td>
+                                    <input type="checkbox" ng-checked="isCheck(fieldCheck)"
+                                           ng-click="checkChose(fieldCheck)" ng-model="fieldCheck.check"/>
+                                </td>
+                                <td>{{fieldCheck.name}}</td>
+                                <td>
+				   				<span ng-repeat="failType in failTypes">
+				   					{{failType.name}}
+				   					<input name={{fieldCheck.name}} type="radio"
+                                           ng-checked="failTypeCheck(fieldCheck,failType.code)"
+                                           ng-click="clickFailType(fieldCheck,failType)"/>
+				   				</span>
+                                </td>
+                                <td>
+                                    <input id={{fieldCheck.name}} type="text" ng-model="fieldCheck.other"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:;" class="btn btn-primary" ng-click="closeChecks()">确定</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--转换器模态框-->
+    <div class="modal fade" id="select_change" role="dialog_region" data-backdrop="static">
+        <div class="modal-dialog water_dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="close_change()" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">选择转换方法</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="changeBoxName">
+                        <table>
+                            <tr>
+                                <th class="wid-10">选中</th>
+                                <th class="wid-20">校验方法名称</th>
+                                <th class="wid-15">校验出错提示</th>
+                            </tr>
+                            <tr ng-repeat="fieldChange in fieldChanges">
+                                <td>
+                                    <input name="field_change" type="radio" ng-checked="isChangeCheck(fieldChange)"
+                                           ng-click="clickChange(fieldChange)" ng-model="fieldChange.check"/>
+                                </td>
+                                <td>{{fieldChange.name}}</td>
+                                <td>
+				   				<span ng-repeat="failType in failTypes">
+				   					{{failType.name}}
+				   					<input name={{fieldChange.name}} type="radio"
+                                           ng-checked="failTypeCheck(fieldChange,failType.code)"
+                                           ng-click="clickFailType(fieldChange,failType)"/>
+				   				</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:;" class="btn btn-primary" ng-click="closeChanges()">确定</a>
+                    <a href="javascript:;" class="btn btn-default" ng-click="cancel()">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

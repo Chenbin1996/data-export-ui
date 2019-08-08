@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+<head>
+    <meta charset="utf-8"/>
+    <title>数据导入</title>
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="description"
+          content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="css/animate.css" type="text/css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/simple-line-icons.css" type="text/css"/>
+    <link rel="stylesheet" href="css/font.css" type="text/css"/>
+    <link rel="stylesheet" href="css/nav.css" type="text/css"/>
+    <link rel="stylesheet" href="css/app.css" type="text/css"/>
+    <link rel="stylesheet" href="css/login.css" type="text/css"/>
+    <link rel="stylesheet" href="vendor/icheck/skins/square/blue.css" type="text/css"/>
+    <link rel="stylesheet" href="vendor/fileinput/fileinput.min.css" type="text/css"/>
+    <link rel="stylesheet" href="vendor/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css"/>
+
+    <!-- haitaoyuan -->
+    <link rel="stylesheet" href="css/uhope.css" type="text/css"/>
+    <link rel="stylesheet" href="css/project-management.css" type="text/css"/>
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" type="text/css"/>
+
+    <!-- jinjiabin -->
+    <link rel="stylesheet" href="css/info-management.css" type="text/css"/>
+    <!--<link rel="stylesheet" href="vendor/icheck/skins/square/blue.css" type="text/css"/>-->
+
+</head>
+<body ng-controller="AppCtrl">
+<div class="app" id="app"
+     ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}"
+     ui-view></div>
+
+
+<!-- jQuery -->
+<script src="vendor/jquery/jquery.min.js"></script>
+
+<!-- Angular -->
+<script src="vendor/angular/angular.js"></script>
+
+<script src="vendor/angular/angular-animate/angular-animate.js"></script>
+<script src="vendor/angular/angular-cookies/angular-cookies.js"></script>
+<script src="vendor/angular/angular-resource/angular-resource.js"></script>
+<script src="vendor/angular/angular-sanitize/angular-sanitize.js"></script>
+<script src="vendor/angular/angular-touch/angular-touch.js"></script>
+
+<!-- Vendor -->
+<script src="vendor/angular/angular-ui-router/angular-ui-router.js"></script>
+<script src="vendor/angular/ngstorage/ngStorage.js"></script>
+
+<!-- bootstrap -->
+<script src="vendor/angular/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="vendor/angular/angular-bootstrap/bootstrap.min.js"></script>
+<!--<script src="vendor/icheck/icheck.min.js"></script>-->
+
+<!-- bootstrap-datetimepicker -->
+<script src="vendor/modules/bootstrap-datetimepicker/moment-with-locales.min.js"></script>
+<script src="vendor/modules/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+
+<!-- echarts -->
+<script src="js/controllers/echarts.js"></script>
+
+<script src="vendor/jquery/jquery.SuperSlide2.1.2.js"></script>
+
+<!-- layer JS -->
+<script src="vendor/layer/layer.js"></script>
+
+<!-- zTree JS -->
+<script src="vendor/zTree_v3/js/jquery.ztree.all.js"></script>
+<!-- lazyload -->
+<script src="vendor/angular/oclazyload/ocLazyLoad.js"></script>
+<!-- translate -->
+<script src="vendor/angular/angular-translate/angular-translate.js"></script>
+<script src="vendor/angular/angular-translate/loader-static-files.js"></script>
+<script src="vendor/angular/angular-translate/storage-cookie.js"></script>
+<script src="vendor/angular/angular-translate/storage-local.js"></script>
+
+<!-- App -->
+<script src="js/app.js"></script>
+<script src="js/config.js"></script>
+<script src="js/config.lazyload.js"></script>
+<script src="js/config.router.js"></script>
+<script src="js/main.js"></script>
+<script src="js/services/ui-load.js"></script>
+
+<!-- 业务依赖JS  begin -->
+<script src="js/services/menu-config.js"></script>
+<script src="js/services/route-service.js"></script>
+<script src="js/services/module-service.js"></script>
+
+<!-- 业务依赖JS end -->
+<script src="js/filters/fromNow.js"></script>
+<script src="js/directives/setnganimate.js"></script>
+<script src="js/directives/ui-butterbar.js"></script>
+<script src="js/directives/ui-focus.js"></script>
+<script src="js/directives/ui-fullscreen.js"></script>
+<script src="js/directives/ui-jq.js"></script>
+<script src="js/directives/ui-module.js"></script>
+<script src="js/directives/ui-nav.js"></script>
+<script src="js/directives/ui-scroll.js"></script>
+<script src="js/directives/ui-shift.js"></script>
+<script src="js/directives/ui-toggleclass.js"></script>
+<script src="js/directives/ui-validate.js"></script>
+
+<script src="js/controllers/bootstrap.js"></script>
+<!-- Lazy loading -->
+<script src="js/directives/navView/navView.js"></script>
+<!--<script src="js/services/module-service.js"></script>-->
+<script src="js/directives/pagination/tm.pagination.js"></script>
+
+<!-- mock.js -->
+<script src="http://mockjs.com/dist/mock-min.js"></script>
+<!-- <script src="vendor/modules/angular-bootstrap-nav-tree/abn_tree_directive.js"></script> -->
+
+<!-- fileinput -->
+<script src="vendor/fileinput/fileinput.min.js"></script>
+<script src="vendor/fileinput/locales/zh.js"></script>
+
+<!--CKEditor-->
+<script src="vendor/ckeditor/ckeditor.js"></script>
+<!--<script src="vendor/ckeditor/samples/js/sample.js"></script>-->
+
+<!--globalparam-->
+<script src="js/globalparam.js" type="text/javascript" charset="utf-8"></script>
+
+<!--globaltree-->
+<script src="js/globaltree.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

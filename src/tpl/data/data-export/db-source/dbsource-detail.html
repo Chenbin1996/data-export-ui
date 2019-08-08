@@ -1,0 +1,40 @@
+<div ng-controller="sourceDetailCtrl">
+    <!--<div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">数据库源—详情</h1>
+    </div>-->
+    <div class="wrapper-md">
+        <div class="panel panel-default m-all-0">
+            <div class="panel-body">
+                <form id="hydroNetAddForm" class="form-inline" method="get" novalidate="novalidate">
+                    <div class="form-item">
+                        <label>数据库源名称</label>
+                        <input type="text" class="form-control input-short" ng-model="source_name" readonly/>
+                    </div>
+                    <div class="form-item">
+                        <label>数据库源驱动</label>
+                        <input type="text" class="form-control input-short" ng-model="source_driver" readonly/>
+                    </div>
+                    <div class="form-item">
+                        <label>默认端口</label>
+                        <input type="text" class="form-control input-short" ng-model="source_port" readonly/>
+                    </div>
+                    <br/>
+                    <div class="form-item">
+                        <label>描述</label>
+                        <textarea class="form-control textarea-long" ng-model="source_description" readonly
+                                  rows="4"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="line line-dashed b-b"></div>
+            <div class="btn-box">
+                <!--<button type="submit" class="btn btn-primary" ng-click="submit()">-->
+                <!--<i class="fa fa-plus"></i>确定-->
+                <!--</button>-->
+                <button type="submit" class="btn btn-default" ng-click="back()">
+                    返回
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

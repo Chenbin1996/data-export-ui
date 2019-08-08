@@ -1,0 +1,47 @@
+<div ng-controller="logController">
+    <!--<div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">导入日志</h1>
+    </div>-->
+    <div class="wrapper-md">
+        <div class="panel panel-default m-all-0 border-bottom-n">
+            <div class="panel-body">
+                <form class="form-inline" method="get">
+                    <div class="form-item">
+                        <label>模板名称</label>
+                        <input type="text" class="form-control input-short" ng-model="find_name"/>
+                    </div>
+                    <button type="submit" class="btn btn-search" ng-click="find()">
+                        搜 索
+                    </button>
+                    <button type="submit" class="btn btn-reset" ng-click="refresh()">重 置</button>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th class="wid-10">序号</th>
+                            <th>模板名称</th>
+                            <th>导入数量</th>
+                            <th>导入状态</th>
+                            <th width="200px">操作</th>
+                        </tr>
+                        <tr ng-repeat="log in logList | filter:{catchment:selectedCatchment}" ng-init="index=$index+1">
+							<td>{{index + (paginationConf.currentPage-1)*paginationConf.itemsPerPage}}</td>
+                            <td class="remark">{{log.templateName}}</td>
+                            <td>{{log.totalCount}}</td>
+                            <td>{{log.stateName}}</td>
+                            <td class="td-tool">
+                                <a class="btn btn-xs" ng-click="logDetail(log.id)"><i class="icon-jx_info" title="详情"></i></a>
+                                <a class="btn btn-xs" ng-click="logToData(log)" ng-if="isToData(log)"><i class="icon-jx_download" title="导入数据"></i></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <tm-pagination conf="paginationConf"></tm-pagination>
+            </div>
+        </div>
+    </div>
+</div>

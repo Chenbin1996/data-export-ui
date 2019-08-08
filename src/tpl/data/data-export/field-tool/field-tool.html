@@ -1,0 +1,60 @@
+<div ng-controller="toolController">
+    <!--<div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">模板工具—管理</h1>
+    </div>-->
+    <div class="wrapper-md">
+        <!--<div class="panel panel-default m-all-0">
+
+            <div class="panel-body">
+                <form class="form-inline" method="get">
+                    <div class="form-item">
+                        <label>模板名称</label>
+                        <input type="text" class="form-control input-short" ng-model="find_name"/>
+                    </div>
+					<button type="submit" class="btn btn-primary" ng-click="find()">
+                        <i class="fa fa-search"></i>搜索
+                    </button>
+                </form>
+            </div>
+        </div>-->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div class="table-bar">
+                        <button type="button" class="btn btn-primary btn-xs" ng-click="toolAdd()">
+                            <i class="icon-jx_add"></i> 新增
+                        </button>
+                    </div>
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th class="wid-10">序号</th>
+                            <th class="wid-25">名称</th>
+                            <th class="wid-15">工具类型</th>
+                            <th class="wid-15">校验器全限定名称</th>
+                            <!--<th class="wid-10">创建人</th>-->
+                            <th class="wid-15">创建时间</th>
+                            <!--<th class="wid-20">描述</th>-->
+                            <th class="wid-20">操作</th>
+                        </tr>
+                        <tr ng-repeat="module in moduleList | filter:{catchment:selectedCatchment}" ng-init="index=$index+1">
+							<td>{{index + (paginationConf.currentPage-1)*paginationConf.itemsPerPage}}</td>
+                            <td>{{module.name}}</td>
+                            <td>{{module.typeName}}</td>
+                            <td class="remark">{{module.className}}</td>
+                            <!--<td>{{module.creator}}</td>-->
+                            <td>{{module.createTime}}</td>
+                            <!--<td>{{module.description}}</td>-->
+                            <td class="td-tool">
+                                <a class="btn btn-xs" ng-click="toolDetail(module.id)"><i class="icon-jx_info" title="详情"></i></a>
+                                <a class="btn btn-xs" ng-click="toolEdit(module.id)"><i class="icon-jx_edit" title="修改"></i></a>
+                                <a class="btn btn-xs" ng-click="toolDelete(module.id);"><i class="icon-jx_delete_form" title="删除"></i></a>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <tm-pagination conf="paginationConf"></tm-pagination>
+            </div>
+        </div>
+    </div>
+</div>
